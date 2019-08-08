@@ -1,10 +1,14 @@
-const express = required('express');       // include express from installed dependencies
-const app = express();                     // instantiate app using express.
+const express = require("express");
+const morgan = require("morgan");
 
-const {router} = require("./router");      // import the route model
+const blogPostsRouter = require("./blogPostsRouter");
+const app = express();
 
-app.use('./blogposts', router);            // route requests to blogposts and router.
+app.use(morgan("common"));
+app.use(express.json());
 
-app.listen(process.env.PORT || 3000, function() {
-    console.log(`Your app is listening on port ${process.env.PORT || 8080}...`);     // app.listen commands the server to listen for client requests on port 3000 and log when it begins listening
-});      
+app.use("/blog-posts", blogPostsRouter);                 // you need to import `blogPostsRouter` router and route requests to HTTP requests to `/blog-posts` to `blogPostsRouter`
+
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
+});

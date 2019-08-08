@@ -1,18 +1,8 @@
-const uuid = require('uuid');
-
-// This module provides volatile storage, using a `BlogPost`
-// model. We haven't learned about databases yet, so for now
-// we're using in-memory storage. This means each time the app stops, our storage
-// gets erased.
-
-// Don't worry too much about how BlogPost is implemented.
-// Our concern in this example is with how the API layer
-// is implemented, and getting it to use an existing model.
-
+const uuid = require("uuid");
 
 function StorageException(message) {
-   this.message = message;
-   this.name = "StorageException";
+  this.message = message;
+  this.name = "StorageException";
 }
 
 const BlogPosts = {
@@ -27,35 +17,29 @@ const BlogPosts = {
     this.posts.push(post);
     return post;
   },
-  get: function(id=null) {
-    // if id passed in, retrieve single post,
-    // otherwise send all posts.
-    if (id !== null) {
+  get: function(id = null) {
+    if (id !== null) {                                      // if id passed in, retrieve single post, otherwise send all posts.
       return this.posts.find(post => post.id === id);
     }
-    // return posts sorted (descending) by
-    // publish date
-    return this.posts.sort(function(a, b) {
-      return b.publishDate - a.publishDate
+    return this.posts.sort(function(a, b) {                // return posts sorted (descending) by publish date
+      return b.publishDate - a.publishDate;
     });
   },
   delete: function(id) {
-    const postIndex = this.posts.findIndex(
-      post => post.id === id);
+    const postIndex = this.posts.findIndex(post => post.id === id);
     if (postIndex > -1) {
       this.posts.splice(postIndex, 1);
     }
   },
   update: function(updatedPost) {
-    const {id} = updatedPost;
-    const postIndex = this.posts.findIndex(
-      post => post.id === updatedPost.id);
+    const { id } = updatedPost;
+    const postIndex = this.posts.findIndex(post => post.id === updatedPost.id);
     if (postIndex === -1) {
-      throw new StorageException(
-        `Can't update item \`${id}\` because doesn't exist.`)
+      throw StorageException(
+        `Can't update item \`${id}\` because doesn't exist.`
+      );
     }
-    this.posts[postIndex] = Object.assign(
-      this.posts[postIndex], updatedPost);
+    this.posts[postIndex] = Object.assign(this.posts[postIndex], updatedPost);
     return this.posts[postIndex];
   }
 };
@@ -66,5 +50,4 @@ function createBlogPostsModel() {
   return storage;
 }
 
-
-module.exports = {BlogPosts: createBlogPostsModel()};
+module.exports = { BlogPosts: createBlogPostsModel() };

@@ -4,6 +4,7 @@
   "description": "a study in CRUD functionality",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "morgan": "^1.9.1",
     "uuid": "^3.3.2"
   }
 }
