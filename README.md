@@ -3,18 +3,12 @@
 <br>
 
 ## What is CRUD API Study?
-The "CRUD API Study" explores the basic functionality of Create, Read, Update, and Delete (i.e. CRUD) operations which
-are the four basic functions of persistent storage.  This study uses a simple blog application as an example.
-
-<br>
-
-In an express applicaion such as this study, CRUD operations will help CREATE a blog post, READ the blog post so that the user
-can see it, UPDATE the blog post, and DELETE the blog post if necessary.
+The "CRUD API Study" explores the basic functionality of Create, Read, Update, and Delete (i.e. CRUD) operations. This study uses a simple blog application as an example to demonstrate CRUD operations which will: CREATE a blog post, READ the blog post, UPDATE the blog post with new or amended information, and DELETE the blog post by removing it from storage.
 
 <br>
 
 ## Does CRUD API Study feature commentary?
-Yes! The CRUD API Study features commentary in the server.js, models.js, and blogPostsRouter.js files.
+Yes! The CRUD API Study features commentary in the server.js, models.js, and blogPostsRouter.js files.  For additional insight into routers, please see "express routers study".
 
 <br>
 
